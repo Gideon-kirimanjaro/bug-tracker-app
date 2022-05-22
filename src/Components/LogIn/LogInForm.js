@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 
 const LogInForm = (props) => {
@@ -39,7 +39,7 @@ const LogInForm = (props) => {
   console.log(">>The data", state.email);
 
   const submit = () => {
-    // props.liftSubmit(email, passWord);
+    props.liftSubmit(state.email, state.passWord);
   };
   return (
     <>

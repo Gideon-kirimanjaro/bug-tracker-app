@@ -1,15 +1,21 @@
 import React from "react";
 import Button from "../UI/Button";
+import VerticalTabs from "./Tabs/Tabs";
 
 const DashBoard = (props) => {
-  const logOutHandler = () => {
-    props.liftLogOut(true);
+  const logOutHandler = (projectName, projectDescription) => {
+    props.liftLogOut();
   };
   return (
     <React.Fragment>
-      <div className="d-flex justify-content-center">
-        This is the dashboard
-        <Button onClick={logOutHandler}>Log Out</Button>
+      <h3 className="d-flex justify-content-center"> BUG TRACKER </h3>
+      <div className="d-flex justify-content-center ml-4 ">
+        <VerticalTabs
+          logOut={logOutHandler}
+          tabData={(projectName, projectDescription) => {
+            props.liftTabData(projectName, projectDescription);
+          }}
+        ></VerticalTabs>
       </div>
     </React.Fragment>
   );
