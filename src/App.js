@@ -1,32 +1,26 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect } from "react";
 import "./App.css";
 import DashBoard from "./Components/DashBoard/DashBoard";
 import LogIn from "./Components/LogIn/LogIn";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AuthContext from "./Components/Store/auth-context";
 function App() {
-  const [logIn, setLogIn] = useState(true);
-  const logInEvent = (passedEvent) => {
-    setLogIn(passedEvent);
-  };
-  const logOutEvent = (passedEvent) => {
-    setLogIn(passedEvent);
-  };
-  const dataHandler = (projectName, projectDescription) => {
-    console.log(">>>The data", projectName, projectDescription);
-  };
+  const ctx = useContext(AuthContext);
+  if (ctx.dataHandler !== "") {
+    console.log(">>>This is the CTX>>", ctx.dataHandler);
+  }
+
+  // useEffect(() => {}, [ctx.dataHandler()]);
   return (
     <React.Fragment>
       <div>
-        <AuthContext.Provider value={{ logIn, setLogIn }}>
-          {logIn && <LogIn liftEvent={logInEvent}></LogIn>}
-          {!logIn && (
-            <DashBoard
-              liftLogOut={logOutEvent}
-              liftTabData={dataHandler}
-            ></DashBoard>
-          )}
-        </AuthContext.Provider>
+        {ctx.logIn && <LogIn liftEvent={ctx.logInEvent}></LogIn>}
+        {!ctx.logIn && (
+          <DashBoard
+            liftLogOut={ctx.logOutEvent}
+            liftTabData={ctx.dataHandler}
+          ></DashBoard>
+        )}
       </div>
     </React.Fragment>
   );

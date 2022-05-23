@@ -42,7 +42,6 @@ const Board = (props) => {
       state.projectName = "";
       state.projectDescription = "";
       setShow(false);
-    } else {
     }
   };
   const handleCancel = () => {
@@ -58,7 +57,6 @@ const Board = (props) => {
   const descriptionHandler = (e) => {
     dispatch({ type: ACTION.DESCRIPTION, payload: e.target.value });
   };
-  const ctx = useContext(AuthContext);
   return (
     <>
       <Card border="secondary" style={{ width: "30rem" }}>
@@ -81,7 +79,6 @@ const Board = (props) => {
             />
           </div>
           <div>
-            {!ctx.logIn && <h3>Get In Mate</h3>}
             <ProjectTable></ProjectTable>
           </div>
         </Card.Body>

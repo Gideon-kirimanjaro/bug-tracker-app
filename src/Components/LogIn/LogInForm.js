@@ -36,7 +36,6 @@ const LogInForm = (props) => {
   const passWordHandler = (e) => {
     dispatch({ type: ACTION.PASSWORD, payload: e.target.value });
   };
-  console.log(">>The data", state.email);
 
   const submit = () => {
     props.liftSubmit(state.email, state.passWord);
