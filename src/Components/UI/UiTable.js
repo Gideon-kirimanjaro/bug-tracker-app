@@ -1,4 +1,3 @@
-import { getThemeProps } from "@mui/system";
 import { Table } from "react-bootstrap";
 
 const UiTable = (props) => {
@@ -7,16 +6,30 @@ const UiTable = (props) => {
       <Table striped bordered hover size="md" variant="dark">
         <thead>
           <tr>
-            {props.th.map((head) => {
-              return <th className="">{head.head}</th>;
-            })}
+            <th>
+              {props.th.map((val) => {
+                return val.projectName;
+              })}
+            </th>
+            <th>
+              {props.th.map((val) => {
+                return val.projectDescription;
+              })}
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            {props.td.map((details) => {
-              return <td className="">{details.detail}</td>;
-            })}
+            <td>
+              {props.td.map((val) => {
+                return val.userProjectName;
+              })}
+            </td>
+            <td>
+              {props.td.map((val) => {
+                return val.userProjectDetails;
+              })}
+            </td>
           </tr>
         </tbody>
       </Table>

@@ -4,13 +4,27 @@ import DashBoard from "./Components/DashBoard/DashBoard";
 import LogIn from "./Components/LogIn/LogIn";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AuthContext from "./Components/Store/auth-context";
+import DashData, { postApi } from "./Components/Store/Database/DashData";
+import axios from "axios";
 function App() {
   const ctx = useContext(AuthContext);
-  if (ctx.dataHandler !== "") {
-    console.log(">>>This is the CTX>>", ctx.dataHandler);
-  }
+  const projectName = ctx.projectData.projectName;
+  const projectDescription = ctx.projectData.projectDescription;
+  useEffect(() => {
+    const postData = setTimeout(
+      axios.post(postApi, {
+        projectName: projectName,
+        projectDescription: projectDescription,
+      }),
+      500
+    );
 
-  // useEffect(() => {}, [ctx.dataHandler()]);
+    const dataCache = () => {
+      clearTimeout(postData);
+    };
+    dataCache();
+  }, [projectName, projectDescription]);
+
   return (
     <React.Fragment>
       <div>

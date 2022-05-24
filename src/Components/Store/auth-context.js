@@ -5,6 +5,7 @@ const AuthContext = createContext({
 });
 export const AuthContextProvider = (props) => {
   const [logIn, setLogIn] = useState(true);
+  const [projectData, setProjectData] = useState({});
   const logInEvent = (passedEvent) => {
     setLogIn(passedEvent);
   };
@@ -12,7 +13,10 @@ export const AuthContextProvider = (props) => {
     setLogIn(passedEvent);
   };
   const dataHandler = (projectName, projectDescription) => {
-    console.log(">>>The data", projectName, projectDescription);
+    setProjectData({
+      projectName: projectName,
+      projectDescription: projectDescription,
+    });
   };
   return (
     <AuthContext.Provider
@@ -21,6 +25,7 @@ export const AuthContextProvider = (props) => {
         logInEvent: logInEvent,
         logOutEvent: logOutEvent,
         dataHandler: dataHandler,
+        projectData: projectData,
       }}
     >
       {props.children}
