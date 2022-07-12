@@ -26,24 +26,10 @@ function App() {
           projectCheck: projectCheck,
           key: uuid,
         }),
-        // await db.database().ref("fruit/").set({
-        //   projectName: projectName,
-        //   projectDescription: projectDescription,
-        // }),
-        // await db.database().ref().set({
-        //   projectName: projectName,
-        //   projectDescription: projectDescription,
-        //   key: uuid,
-        // }),
-        // await axios.post(postApi, {
-        //   projectName: projectName,
-        //   projectDescription: projectDescription,
-        // }),
         100
       );
     }
     postData();
-
     const dataCache = () => {
       clearTimeout(postData);
     };
