@@ -35,15 +35,17 @@ const Board = (props) => {
     validProject: true,
   });
   const [show, setShow] = useState(false);
-
+  const [checkBox, setCheckBox] = useState();
   const handleClose = () => {
     if (state.validName === false && state.validProject === false) {
-      props.liftData(state.projectName, state.projectDescription);
+      props.liftData(state.projectName, state.projectDescription, checkBox);
       state.projectName = "";
       state.projectDescription = "";
+
       setShow(false);
     }
   };
+
   const handleCancel = () => {
     setShow(false);
   };
@@ -57,6 +59,11 @@ const Board = (props) => {
   const descriptionHandler = (e) => {
     dispatch({ type: ACTION.DESCRIPTION, payload: e.target.value });
   };
+  const checkedData = (value) => {
+    setCheckBox(value);
+    console.log(">>>Lifted CheckbOX", value);
+  };
+
   return (
     <>
       <Card border="secondary" style={{ width: "30rem" }}>
@@ -76,10 +83,13 @@ const Board = (props) => {
               nameHandler={nameHandler}
               projectValid={state.validProject}
               nameValid={state.validName}
+              liftCheckedData={checkedData}
             />
           </div>
           <div>
-            <ProjectTable></ProjectTable>
+            <ProjectTable
+              changeFn={{ pd: state.projectDescription, pn: state.projectName }}
+            ></ProjectTable>
           </div>
         </Card.Body>
       </Card>

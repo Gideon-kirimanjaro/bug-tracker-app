@@ -9,6 +9,7 @@ import AuthContext from "../../Store/auth-context";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
+  //console.log(">>>Checkbox", checkBox);
 
   return (
     <div
@@ -78,8 +79,8 @@ export default function VerticalTabs(props) {
       </Tabs>
       <TabPanel value={value} index={0}>
         <Board
-          liftData={(projectName, projectDescription) => {
-            props.tabData(projectName, projectDescription);
+          liftData={(projectName, projectDescription, checkBox) => {
+            props.tabData(projectName, projectDescription, checkBox);
           }}
         ></Board>
       </TabPanel>

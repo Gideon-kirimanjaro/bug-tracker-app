@@ -3,7 +3,7 @@ import Button from "../UI/Button";
 import VerticalTabs from "./Tabs/Tabs";
 
 const DashBoard = (props) => {
-  const logOutHandler = (projectName, projectDescription) => {
+  const logOutHandler = (projectName, projectDescription, checkBox) => {
     props.liftLogOut();
   };
   return (
@@ -12,8 +12,8 @@ const DashBoard = (props) => {
       <div className="d-flex justify-content-center ml-4 ">
         <VerticalTabs
           logOut={logOutHandler}
-          tabData={(projectName, projectDescription) => {
-            props.liftTabData(projectName, projectDescription);
+          tabData={(projectName, projectDescription, checkBox) => {
+            props.liftTabData(projectName, projectDescription, checkBox);
           }}
         ></VerticalTabs>
       </div>

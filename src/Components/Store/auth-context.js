@@ -12,10 +12,12 @@ export const AuthContextProvider = (props) => {
   const logOutEvent = (passedEvent) => {
     setLogIn(passedEvent);
   };
-  const dataHandler = (projectName, projectDescription) => {
+  const dataHandler = (projectName, projectDescription, checkBox) => {
+    console.log("The auth data:", projectName, projectDescription, checkBox);
     setProjectData({
       projectName: projectName,
       projectDescription: projectDescription,
+      checkBox: checkBox,
     });
   };
   return (

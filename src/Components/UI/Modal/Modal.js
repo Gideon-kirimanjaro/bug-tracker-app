@@ -3,6 +3,20 @@ import { Button, Form, Modal } from "react-bootstrap";
 import ReactDom from "react-dom";
 
 const ProjectModal = (props) => {
+  const [checked, setChecked] = useState([]);
+  const checkList = ["Kyllian Mbappe", "Karim Benzema", "Son Heung Min"];
+  // Add/Remove checked item from list
+  const handleCheck = (event) => {
+    let updatedList = [...checked];
+    if (event.target.checked) {
+      updatedList = [...checked, event.target.value];
+    } else {
+      updatedList.splice(checked.indexOf(event.target.value), 1);
+    }
+    setChecked(updatedList);
+  };
+  console.log("The checked value", checked);
+  props.liftCheckedData(checked);
   return (
     <>
       <Modal show={props.show} onHide={props.handleCancel}>
@@ -44,6 +58,15 @@ const ProjectModal = (props) => {
               </h5>
             )}
           </Form>
+          <Form>
+            <h5>Assign a developer</h5>
+            {checkList.map((item, index) => (
+              <div key={index}>
+                <input value={item} type="checkbox" onChange={handleCheck} />
+                <span>{item}</span>
+              </div>
+            ))}
+          </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={props.handleClose}>
@@ -73,6 +96,7 @@ const UiModal = (props) => {
           enteredDescription={props.projectDescription}
           descriptionHandler={props.descriptionHandler}
           nameHandler={props.nameHandler}
+          liftCheckedData={props.liftCheckedData}
         />,
         document.getElementById("modal")
       )}
