@@ -14,23 +14,6 @@ const ProjectTable = (props) => {
   const [render, setRender] = useState(0);
   const dbRef = ref(getDatabase());
   useEffect(() => {
-    // eslint-disable-next-line no-unused-expressions
-    // get(child(dbRef, "project-data/"))
-    //   .then((snapshot) => {
-    //     if (snapshot.exists()) {
-    //       const values = Object.values(snapshot.val());
-    //       console.log("snap>>>", values);
-    //       setDetails(values);
-    //     } else {
-    //       setDetails();
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
-    // return () => {
-    //   setDetails();
-    // };
     axios
       .get(postApi)
       .then((response) => {

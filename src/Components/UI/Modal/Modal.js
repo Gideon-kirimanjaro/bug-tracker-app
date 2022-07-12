@@ -4,7 +4,7 @@ import ReactDom from "react-dom";
 
 const ProjectModal = (props) => {
   const [checked, setChecked] = useState([]);
-  const checkList = ["Kyllian Mbappe", "Karim Benzema", "Son Heung Min"];
+  const checkList = ["Cobra Kai", "Will Smith", "Dexter"];
   // Add/Remove checked item from list
   const handleCheck = (event) => {
     let updatedList = [...checked];

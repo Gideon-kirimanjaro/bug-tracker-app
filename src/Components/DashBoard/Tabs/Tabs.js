@@ -5,8 +5,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Board from "./Dash/Board";
-import AuthContext from "../../Store/auth-context";
-
+import Tickets from "./Tickets/Tickets";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
   //console.log(">>>Checkbox", checkBox);
@@ -85,7 +84,9 @@ export default function VerticalTabs(props) {
         ></Board>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <h2>Tickets</h2>
+        <h2>
+          <Tickets></Tickets>
+        </h2>
       </TabPanel>
       <TabPanel value={value} index={2}>
         <h2>Administration</h2>
